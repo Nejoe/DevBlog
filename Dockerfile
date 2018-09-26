@@ -8,6 +8,8 @@ RUN mkdir -p /usr/src/hexo-blog
 WORKDIR /usr/src/hexo-blog
 # 复制当前所有文件到编译容器中
 COPY . .
+# 安装子模块
+RUN git submodule init && git submodule update
 # 安装 hexo-cli
 RUN npm install hexo-cli -g && npm install
 # 生成静态文件
